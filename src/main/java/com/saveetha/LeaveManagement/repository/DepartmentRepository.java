@@ -1,9 +1,14 @@
 package com.saveetha.LeaveManagement.repository;
 
+
 import com.saveetha.LeaveManagement.entity.Department;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.Optional;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
-    Optional<Department> findByDeptName(String deptName);
+    boolean existsByDeptName(String deptName);
+    List<Department> findByActive(boolean active);
 }

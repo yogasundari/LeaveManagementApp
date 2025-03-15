@@ -33,7 +33,12 @@ public class AuthenticationService {
         employee.setEmpId(request.getEmpId());
         employee.setEmail(request.getEmail());
         employee.setPassword(passwordEncoder.encode(request.getPassword()));
-        employee.setRole(request.getRole() != null ? Role.fromString(request.getRole().toString()) : Role.EMPLOYEE);
+        String role = request.getRole() != null ? request.getRole().toString().toUpperCase() : "ROLE_EMPLOYEE";
+        if (!role.startsWith("ROLE_")) {
+            role = "ROLE_" + role;
+        }
+        employee.setRole(Role.fromString(role));
+
         employee.setActive(true);
 
         // Save to DB

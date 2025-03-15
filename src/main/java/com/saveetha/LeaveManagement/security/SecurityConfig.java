@@ -17,7 +17,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.disable())  // Disable CORS if needed
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()  // Allow authentication APIs
-                        .requestMatchers("/api/departments/create", "/api/departments/update/**", "/api/departments/delete/**").hasRole("ADMIN")  // Only admins can manage departments
+                        .requestMatchers("/api/departments/create", "/api/departments/update/**", "/api/departments/delete/**").hasAuthority("ROLE_ADMIN")  // Only admins can manage departments
                         .requestMatchers("/api/departments/all").permitAll()  // Anyone can view departments
                         .anyRequest().authenticated()  // Secure all other endpoints
                 )

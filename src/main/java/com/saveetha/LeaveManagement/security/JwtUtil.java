@@ -34,7 +34,7 @@ public class JwtUtil {
             DecodedJWT decodedJWT = verifier.verify(token);
             return decodedJWT.getSubject();
         } catch (JWTVerificationException e) {
-            throw new RuntimeException("Invalid or expired JWT token");
+            throw new RuntimeException("Invalid or expired JWT token", e);
         }
     }
 

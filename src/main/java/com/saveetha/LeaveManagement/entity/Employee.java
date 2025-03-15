@@ -19,6 +19,7 @@ public class Employee {
     @Column(length = 10, nullable = false)
     private String empId; // Employee ID
 
+    // amazonq-ignore-next-line
     @Column(nullable = true, length = 100)
     private String empName;
 
@@ -36,7 +37,7 @@ public class Employee {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Role role = Role.EMPLOYEE; // Default role: EMPLOYEE
+    private Role role = Role.ROLE_EMPLOYEE; // Default role: EMPLOYEE
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = true)

@@ -1,10 +1,14 @@
 package com.saveetha.LeaveManagement.enums;
 
 public enum Role {
-    EMPLOYEE,
-    ADMIN;
-
+    ROLE_EMPLOYEE,
+    ROLE_ADMIN;
     public static Role fromString(String role) {
-        return Role.valueOf(role.toUpperCase());  // Convert to uppercase before matching
+        for (Role r : Role.values()) {
+            if (r.name().equalsIgnoreCase(role)) {
+                return r;
+            }
+        }
+        throw new IllegalArgumentException("Invalid role: " + role);
     }
 }
